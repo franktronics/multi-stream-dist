@@ -4,10 +4,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "nx run-many --target=serve",
+    "back": "nx serve server",
     "lint": "nx run-many --target=lint"
   },
   "private": true,
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@nrwl/next": "15.6.2",
     "axios": "^1.0.0",
     "express": "^4.18.1",
