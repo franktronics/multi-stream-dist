@@ -17,7 +17,10 @@ function Signup({ pageProps }: AppProps) {
       </Head>
       <Box bg="light" h="100vh">
         <Flex flexDirection={"column"} align={"center"} justify={"center"} >
-          <Box p="20px">
+          <Box alignSelf="start" m="10px">
+            <Text textAlign="left" fontSize='lg' color="black.100" fontWeight="bold">Multi Chat &#8226;</Text>
+          </Box>
+          <Box p="50px">
             <Image src={logo} width={150} height={150} alt="Multi stream"/>
           </Box>
           <Box
