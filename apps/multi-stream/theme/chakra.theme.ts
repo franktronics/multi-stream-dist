@@ -1,4 +1,5 @@
 import { extendTheme } from '@chakra-ui/react'
+import { Button, Input } from "@multi-stream/shared/ui"
 
 export const theme = extendTheme({
   fonts: {
@@ -9,8 +10,12 @@ export const theme = extendTheme({
   semanticTokens: {
     colors: {
       'primary': {
-        default: '#95A4FC',
-        _dark: '#95A4FC',
+        default: '#7a8cf8',
+        _dark: '#7a8cf8',
+      },
+      'primary-dark': {
+        default: '#6277f4',
+        _dark: '#6277f4',
       },
       'white': {
         default: '#ffffff',
@@ -42,4 +47,8 @@ export const theme = extendTheme({
       }
     },
   },
+  components: {
+    Button,
+    Input
+  }
 })
