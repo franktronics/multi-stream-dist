@@ -25,6 +25,14 @@ function Signup({ pageProps }: AppProps) {
             <FormHelperText>Fait office d&apos;identifiant</FormHelperText>
           </FormControl>
           <FormControl mb="20px">
+            <FormLabel>Nom</FormLabel>
+            <Input
+              type='text'
+              placeholder='Adrien'
+            />
+            <FormHelperText>Votre nom d&apos;utilisateur</FormHelperText>
+          </FormControl>
+          <FormControl mb="20px">
             <FormLabel>Mot de passe</FormLabel>
             <InputGroup>
               <Input

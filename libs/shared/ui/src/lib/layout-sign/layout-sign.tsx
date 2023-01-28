@@ -19,7 +19,7 @@ export function LayoutSign(props: PropsWithChildren<LayoutSignProps>) {
         <Box alignSelf="start" m="10px" paddingBlock="10px">
           <Text textAlign="left" fontSize='lg' color="black.100" fontWeight="bold">Multi Chat &#8226; <Badge colorScheme='purple'>Beta</Badge></Text>
         </Box>
-        <Box paddingBlock="30px">
+        <Box paddingBlock="0 20px">
           <Image src={logo} width={130} height={130} alt="Multi stream"/>
         </Box>
         <Box
