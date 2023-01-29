@@ -2,8 +2,10 @@ import express, {Express} from 'express'
 import chalk from "chalk"
 import cors from "cors"
 import { verifyToken } from "./middleware/authJwt"
-
+import * as dotenv from 'dotenv'
 import userRoutes from "./routes/user.routes"
+
+dotenv.config()
 
 const port = process.env.API_PORT ? Number(process.env.API_PORT) : 3000
 const app: Express = express()
@@ -41,5 +43,5 @@ app.use('/user', userRoutes)
 //////////
 
 app.listen(port, () => {
-  console.log(chalk.green(`[ ready ] http://localhost:${port}`))
+  console.log(chalk.bgGreen('[ ready ]'), (`http://localhost:${port}`))
 })

@@ -3,6 +3,8 @@ import Head from 'next/head'
 import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from "../theme/chakra.theme"
 import "../style/base.scss"
+import { UserProvider } from '../context/user.context'
+import { StrictMode } from 'react'
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
@@ -11,9 +13,13 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <title>Multi-stream</title>
       </Head>
       <main className="app">
-        <ChakraProvider theme={theme}>
-          <Component {...pageProps} />
-        </ChakraProvider>
+        <StrictMode>
+          <ChakraProvider theme={theme}>
+            <UserProvider>
+              <Component {...pageProps} />
+            </UserProvider>
+          </ChakraProvider>
+        </StrictMode>
       </main>
     </>
   )

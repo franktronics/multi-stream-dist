@@ -24,7 +24,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "multi-stream:build",
-        "dev": true
+        "dev": true,
+        "hostname": "192.168.178.141"
       },
       "configurations": {
         "development": {

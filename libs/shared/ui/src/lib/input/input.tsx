@@ -16,7 +16,7 @@ export const Input = defineMultiStyleConfig({
         _focus: {
           border: '1px solid',
           borderColor: 'primary',
-          boxShadow: "0 0 0 1px primary"
+          boxShadow: "0 0 0 1px primary",
         }
       }
     })

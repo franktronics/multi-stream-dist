@@ -1,12 +1,26 @@
+import { AppProps } from "next/app";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useGetUser, useUser } from "../context/user.context";
+import { useService } from "../utils/service";
 
-export function Index() {
+export function Index({ pageProps }: AppProps) {
+  const router = useRouter()
+  const userContext = useUser()
+  const [request] = useService()
+
+  useEffect(() => {
+    useGetUser(userContext, request).then((result) => {
+      if(result.status !== "success"){
+        router.push("/signin")
+      }
+    })
+  }, [])
+
   return (
     <div>
-      <video controls width="512">
-        <source src="http://localhost:8000/live/test.flv" type="video/mp4"/>
-      </video>
     </div>
   )
 }
 
-export default Index;
+export default Index

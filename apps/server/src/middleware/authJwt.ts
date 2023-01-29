@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken"
 import {Request, Response, NextFunction} from 'express'
 
-const TOKENKEY = process.env.API_TOKEN
+const tokenKey = process.env.API_TOKEN_KEY
 
 export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   if (req.url === '/user/signin' || req.url === '/user/signup') {
@@ -22,7 +22,7 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
     })
   }
   if(typeof token === 'string')
-  jwt.verify(token, TOKENKEY, (err, decoded: {userId: string}) => {
+  jwt.verify(token, tokenKey, (err, decoded: {userId: string}) => {
     if (err) {
       return res.status(401).send({
         message: "Unauthorized!"

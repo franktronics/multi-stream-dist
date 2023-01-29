@@ -44,6 +44,22 @@ export const theme = extendTheme({
       'black.40': {
         default: 'rgba(0, 0, 0, 0.4)',
         _dark: 'rgba(255, 255, 255, 0.4)',
+      },
+      'success': {
+        default: '#10B981',
+        _dark: '#10B981',
+      },
+      'error': {
+        default: '#F87171',
+        _dark: '#F87171',
+      },
+      'info': {
+        default: '#0EA5E9',
+        _dark: '#0EA5E9',
+      },
+      'warning': {
+        default: '#FB923C',
+        _dark: '#FB923C',
       }
     },
   },
