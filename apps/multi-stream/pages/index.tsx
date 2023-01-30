@@ -13,9 +13,11 @@ export function Index({ pageProps }: AppProps) {
     useGetUser(userContext, request).then((result) => {
       if(result.status !== "success"){
         router.push("/signin")
+      }else{
+        userContext.setUser(result.data.user)
       }
     })
-  }, [])
+  }, [useGetUser])
 
   return (
     <div>

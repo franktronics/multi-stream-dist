@@ -65,7 +65,6 @@ export const useService = () => {
       }
     }
   }
-  //type t = typeof request
 
   return [request]
 }

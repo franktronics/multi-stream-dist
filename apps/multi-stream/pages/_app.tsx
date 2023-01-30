@@ -12,15 +12,15 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Multi-stream</title>
       </Head>
-      <main className="app">
-        <StrictMode>
-          <ChakraProvider theme={theme}>
-            <UserProvider>
-              <Component {...pageProps} />
-            </UserProvider>
-          </ChakraProvider>
-        </StrictMode>
-      </main>
+      <StrictMode>
+        <main className="app">
+            <ChakraProvider theme={theme}>
+              <UserProvider>
+                <Component {...pageProps} />
+              </UserProvider>
+            </ChakraProvider>
+        </main>
+      </StrictMode>
     </>
   )
 }
