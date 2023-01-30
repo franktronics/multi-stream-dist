@@ -2,6 +2,7 @@ import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPane
 import styles from './slidebar.module.scss';
 import { AiOutlineHome, AiOutlineHistory, AiOutlineLineChart, AiOutlineBulb, AiOutlineWifi } from "react-icons/ai"
 import { Ellipse } from '@multi-stream/shared/ui';
+import { useDashboard } from 'apps/multi-stream/context/dashboard.context';
 
 /* eslint-disable-next-line */
 export interface SlidebarProps {
@@ -9,46 +10,60 @@ export interface SlidebarProps {
   [key: string]: any
 }
 export type SlidebarOptions = Array<{
+  id: string,
   section: string,
   children: Array<{
+    id: string,
     childName: string,
     icon: JSX.Element,
-    subChildren?: Array<{subChildrenName: string}>
+    subChildren?: Array<{
+      id: string,
+      subChildrenName: string
+    }>
   }>
 }>
 
 export function Slidebar(props: SlidebarProps) {
   const {className, ...rest} = props
+  const dashBoardContext = useDashboard()
+
   const SlidebarOptions: SlidebarOptions = [
     {
+      id: "sec1",
       section: "General",
       children: [
         {
+          id: "child1",
           childName: "Aperçu",
           icon: <AiOutlineBulb size={20}/>
         },
         {
+          id: "child2",
           childName: "Stream",
           icon: <AiOutlineWifi size={20}/>,
           subChildren: [
-            {subChildrenName: "test 1"},
-            {subChildrenName: "test 2"}
+            {id: "sub1", subChildrenName: "Youtube"},
+            {id: "sub2", subChildrenName: "Facebook"}
           ]
         }
       ]
     },
     {
+      id: "sec2",
       section: "Dashboards",
       children: [
         {
+          id: "child1",
           childName: "Home",
           icon: <AiOutlineHome size={20}/>
         },
         {
+          id: "child2",
           childName: "Historique",
           icon: <AiOutlineHistory size={20}/>
         },
         {
+          id: "child3",
           childName: "Statistiques",
           icon: <AiOutlineLineChart size={20}/>
         }
@@ -64,16 +79,23 @@ export function Slidebar(props: SlidebarProps) {
       </Flex>
       <Box mt="20px" p="6px">
         {SlidebarOptions.map((sec) => {
-          return <Box mb="28px">
-            <Box key={sec.section}>
+          return <Box mb="28px" key={sec.id}>
+            <Box>
               <Text color="black.40" fontSize={14} pb="8px">{sec.section}</Text>
             </Box>
             <Accordion allowToggle allowMultiple>
               {sec.children.map((child) => {
                 return <>
-                  <AccordionItem key={child.childName} border="none">
+                  <AccordionItem key={sec.id + child.id} border="none">
                     <h2>
-                      <AccordionButton _hover={{bg: "black.5"}} paddingInline={"10px 5px"} marginBlock="5px" borderRadius="md">
+                      <AccordionButton
+                        _hover={{bg: "black.5"}}
+                        paddingInline={"10px 5px"}
+                        marginBlock="5px"
+                        borderRadius="md"
+                        bg={dashBoardContext.state === `${sec.id}.${child.id}`? "black.5": ""}
+                        onClick={() => !child.subChildren && dashBoardContext.setState(`${sec.id}.${child.id}`)}
+                      >
                         {child.subChildren? <>
                           <AccordionIcon color="black.40" position="relative" left="-6px"/>
                           <Box position="relative" left="-3px" mr="5px">{child.icon}</Box>
@@ -90,7 +112,19 @@ export function Slidebar(props: SlidebarProps) {
                       <AccordionPanel pb={"16px"} pt="0">
                         {child.subChildren?.map((sub) => {
                           return <>
-                            <AccordionButton paddingBlock={"5px"} _hover={{bg: "black.5"}} borderRadius="md" padding={"5px 20px"}>{sub.subChildrenName}</AccordionButton>
+                            <Box
+                              key={sec.id + child.id + sub.id}
+                              paddingBlock={"5px"}
+                              marginBottom={"5px"}
+                              _hover={{bg: "black.5"}}
+                              cursor="pointer"
+                              borderRadius="md"
+                              padding={"5px 20px"}
+                              bg={dashBoardContext.state === `${sec.id}.${child.id}.${sub.id}`? "black.5": ""}
+                              onClick={() => dashBoardContext.setState(`${sec.id}.${child.id}.${sub.id}`)}
+                            >
+                              {sub.subChildrenName}
+                            </Box>
                           </>
                         })}
                       </AccordionPanel>
