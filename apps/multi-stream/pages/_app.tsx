@@ -5,6 +5,7 @@ import { theme } from "../theme/chakra.theme"
 import "../style/base.scss"
 import { UserProvider } from '../context/user.context'
 import { StrictMode } from 'react'
+import { DashboardProvider } from '../context/dashboard.context'
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,7 +17,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <main className="app">
             <ChakraProvider theme={theme}>
               <UserProvider>
-                <Component {...pageProps} />
+                <DashboardProvider>
+                  <Component {...pageProps} />
+                </DashboardProvider>
               </UserProvider>
             </ChakraProvider>
         </main>

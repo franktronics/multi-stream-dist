@@ -1,0 +1,16 @@
+.slidebar{
+  width: 212px;
+  height: 100%;
+  padding: 20px;
+
+  background: var(--chakra-colors-white);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+
+  @media all and (max-width: 640px){
+    position: fixed;
+    top: 72px;
+    height: calc(100% - 72px);
+    transform: translateX(-100%);
+    transition: .2s transform ease-in-out;
+  }
+}

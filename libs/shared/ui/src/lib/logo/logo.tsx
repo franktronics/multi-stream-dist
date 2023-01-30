@@ -4,14 +4,14 @@ import styles from './logo.module.scss'
 /* eslint-disable-next-line */
 export interface LogoProps {
   color?: string,
-  size?: string
+  size?: number
   [k: string]: any
 }
 
 export function Logo(props: LogoProps) {
   const {color = '#fff', size = "big", ...rest} = props
   return (
-    <svg {...rest} className={styles.big} width="430" height="430" viewBox="0 0 430 430" fill={color} xmlns="http://www.w3.org/2000/svg">
+    <svg {...rest} width={size} height={size} viewBox="0 0 430 430" fill={color} xmlns="http://www.w3.org/2000/svg">
       <circle cx="55" cy="59" r="45" stroke={color} strokeWidth="10"/>
       <circle cx="347" cy="135" r="55" stroke={color} strokeWidth="10"/>
       <circle cx="123" cy="365" r="55" stroke={color} strokeWidth="10"/>

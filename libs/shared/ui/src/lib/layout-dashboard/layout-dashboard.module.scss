@@ -1,0 +1,25 @@
+.layout-dashboard{
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 212px 1fr;
+  grid-template-rows: 72px 1fr;
+  grid-template-areas: "l1 l2"
+                       "l1 l3";
+  position: relative;
+
+  &>nav{
+    grid-area: l2;
+  }
+  &>aside{
+    grid-area: l1;
+  }
+  &>main{
+    grid-area: l3;
+  }
+  @media all and (max-width: 640px){
+    grid-template-columns: 1fr;
+    grid-template-rows: 72px 1fr;
+    grid-template-areas: "l2 l2"
+                         "l3 l3";
+  }
+}

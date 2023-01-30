@@ -45,6 +45,10 @@ export const theme = extendTheme({
         default: 'rgba(0, 0, 0, 0.4)',
         _dark: 'rgba(255, 255, 255, 0.4)',
       },
+      'black.5': {
+        default: 'rgba(0, 0, 0, 0.05)',
+        _dark: 'rgba(255, 255, 255, 0.1)',
+      },
       'success': {
         default: '#10B981',
         _dark: '#10B981',

@@ -35,3 +35,6 @@ body{
     --toastify-color-progress-warning: var(--chakra-colors-warning);
     --toastify-color-progress-error: var(--chakra-colors-error);
 }
+body.slidebar-open .slidebar{
+  transform: translateX(0);
+}

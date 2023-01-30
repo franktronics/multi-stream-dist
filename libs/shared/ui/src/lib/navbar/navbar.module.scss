@@ -1,0 +1,23 @@
+.navbar{
+  height: 72px;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--chakra-colors-white);
+}
+.nav-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding-inline: clamp(10px, 3vw, 28px);
+}
+.nav-left{
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+}
+.nav-right{
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+}
