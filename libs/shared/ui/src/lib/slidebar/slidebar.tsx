@@ -9,6 +9,7 @@ export interface SlidebarProps {
   className?: string,
   [key: string]: any
 }
+
 export type SlidebarOptions = Array<{
   id: string,
   section: string,
@@ -83,11 +84,10 @@ export function Slidebar(props: SlidebarProps) {
             <Box>
               <Text color="black.40" fontSize={14} pb="8px">{sec.section}</Text>
             </Box>
-            <Accordion allowToggle allowMultiple>
+            <Accordion allowMultiple>
               {sec.children.map((child) => {
-                return <>
-                  <AccordionItem key={sec.id + child.id} border="none">
-                    <h2>
+                return <AccordionItem key={sec.id + child.id} border="none">
+                    <h2 key={'title' + sec.id + child.id}>
                       <AccordionButton
                         _hover={{bg: "black.5"}}
                         paddingInline={"10px 5px"}
@@ -111,8 +111,7 @@ export function Slidebar(props: SlidebarProps) {
                     {child.subChildren && (
                       <AccordionPanel pb={"16px"} pt="0">
                         {child.subChildren?.map((sub) => {
-                          return <>
-                            <Box
+                          return <Box
                               key={sec.id + child.id + sub.id}
                               paddingBlock={"5px"}
                               marginBottom={"5px"}
@@ -125,12 +124,10 @@ export function Slidebar(props: SlidebarProps) {
                             >
                               {sub.subChildrenName}
                             </Box>
-                          </>
                         })}
                       </AccordionPanel>
                     )}
-                  </AccordionItem>
-                </>
+                </AccordionItem>
               })}
             </Accordion>
           </Box>
