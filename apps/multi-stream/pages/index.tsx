@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { LayoutDashboard, Navbar, Slidebar } from "@multi-stream/shared/ui";
+import { HomeDash, LayoutDashboard, Navbar, Slidebar } from "@multi-stream/shared/ui";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -27,8 +27,10 @@ export function Index({ pageProps }: AppProps) {
     <LayoutDashboard>
       <Slidebar className="slidebar"/>
       <Navbar className="navbar" dashboardContext={dashboardContext}/>
-      <Box as="main" p="28px" className="container">
-        content
+      <Box as="main" className="home-dash-container" bg="blue.100">
+        {dashboardContext.state === "sec2.child1"?
+          <HomeDash/>
+        : "Other"}
       </Box>
     </LayoutDashboard>
   )

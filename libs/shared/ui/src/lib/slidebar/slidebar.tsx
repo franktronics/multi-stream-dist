@@ -100,7 +100,7 @@ export function Slidebar(props: SlidebarProps) {
                           <AccordionIcon color="black.40" position="relative" left="-6px"/>
                           <Box position="relative" left="-3px" mr="5px">{child.icon}</Box>
                         </>: <>
-                          <Ellipse color='var(--chakra-colors-black-40)'/>
+                          <Ellipse color={dashBoardContext.state === `${sec.id}.${child.id}`? "var(--chakra-colors-primary)": "var(--chakra-colors-black-40)"}/>
                           <Box ml="10px" mr="10px">{child.icon}</Box>
                         </>}
                         <Box as="span" flex='1' textAlign='left'>

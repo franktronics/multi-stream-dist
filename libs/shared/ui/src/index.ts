@@ -1,3 +1,6 @@
+export * from './lib/source-connector/source-connector';
+export * from './lib/video-player/video-player';
+export * from './lib/home-dash/home-dash';
 export * from './lib/svg-pack/svg-pack';
 export * from './lib/button-theme/button-theme';
 export * from './lib/slidebar/slidebar';

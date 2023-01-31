@@ -19,15 +19,19 @@ export const theme = extendTheme({
       },
       'white': {
         default: '#ffffff',
-        _dark: '#1C1C1C',
+        _dark: '#262a33',
       },
       'light': {
-        default: '#F7F9FB',
+        default: '#e4ecf5',
         _dark: 'rgba(255, 255, 255, 0.05)',
       },
       'blue': {
         default: '#E3F5FF',
         _dark: '#E3F5FF',
+      },
+      'blue.100': {
+        default: '#ffffff',
+        _dark: '#1a202c',
       },
       'purple': {
         default: '#E5ECF6',

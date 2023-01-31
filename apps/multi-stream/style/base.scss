@@ -38,3 +38,10 @@ body{
 body.slidebar-open .slidebar{
   transform: translateX(0);
 }
+.home-dash-container{
+  padding: 28px;
+
+  @media all and (max-width: 640px){
+    padding: 20px 10px;
+  }
+}

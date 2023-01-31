@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { PropsWithChildren } from 'react'
 import { StaticImageData } from "next/dist/client/image"
 import { motion } from 'framer-motion'
+import { ButtonTheme } from '@multi-stream/shared/ui'
+import { useDashboard } from 'apps/multi-stream/context/dashboard.context'
 
 /* eslint-disable-next-line */
 export interface LayoutSignProps {
@@ -13,13 +15,18 @@ export interface LayoutSignProps {
 
 export function LayoutSign(props: PropsWithChildren<LayoutSignProps>) {
   const { children, title, logo } = props
+  const dashboardContext = useDashboard()
 
   return (
     <Box bg="light" minH="100vh" pb="20px">
       <Flex flexDirection={"column"} align={"center"} justify={"center"} maxW="1440px" margin="0 auto">
-        <Box alignSelf="start" m="10px" paddingBlock="10px">
+        <Flex alignSelf="start" padding="10px" w="100%" alignItems="center" justifyContent="space-between">
           <Text textAlign="left" fontSize='lg' color="black.100" fontWeight="bold">Multi Chat &#8226; <Badge colorScheme='purple'>Beta</Badge></Text>
-        </Box>
+          <ButtonTheme
+            theme={dashboardContext.theme}
+            toggle={dashboardContext.toggleTheme}
+          />
+        </Flex>
         <Box paddingBlock="0 20px">
           <Image src={logo} priority={true} width={130} height={130} alt="Multi stream"/>
         </Box>
