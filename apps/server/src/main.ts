@@ -56,7 +56,6 @@ app.use('/user', userRoutes)
 io.use((socket, next) => {
   const token = socket.handshake.auth.token
   const userId = socket.handshake.auth.userId
-  console.log("socket.handshake.auth", socket.handshake.auth)
   try{
     verifySocketToken(token, userId)
   }catch(error){
