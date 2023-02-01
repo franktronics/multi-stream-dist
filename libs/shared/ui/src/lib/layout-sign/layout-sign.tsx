@@ -1,7 +1,7 @@
 import styles from './layout-sign.module.scss'
 import { Box, Text, Flex, Badge } from '@chakra-ui/react'
 import Image from 'next/image'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, memo } from 'react'
 import { StaticImageData } from "next/dist/client/image"
 import { motion } from 'framer-motion'
 import { ButtonTheme } from '@multi-stream/shared/ui'
@@ -13,7 +13,7 @@ export interface LayoutSignProps {
   logo: StaticImageData
 }
 
-export function LayoutSign(props: PropsWithChildren<LayoutSignProps>) {
+const LayoutSign = memo((props: PropsWithChildren<LayoutSignProps>) => {
   const { children, title, logo } = props
   const dashboardContext = useDashboard()
 
@@ -56,6 +56,6 @@ export function LayoutSign(props: PropsWithChildren<LayoutSignProps>) {
       </Flex>
     </Box>
   )
-}
+})
 
-export default LayoutSign
+export {LayoutSign}

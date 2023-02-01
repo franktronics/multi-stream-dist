@@ -9,3 +9,8 @@ export type Method =
   | 'purge' | 'PURGE'
   | 'link' | 'LINK'
   | 'unlink' | 'UNLINK'
+
+export type SocketInitType = {
+  token?: string | undefined | null,
+  userId?: string | undefined | null
+}

@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios"
 import { useEffect, useState } from "react"
-import { Method } from "./service.type"
+import { Method } from "./utils.type"
 import Cookies from 'js-cookie'
 
 type RequestProps = {

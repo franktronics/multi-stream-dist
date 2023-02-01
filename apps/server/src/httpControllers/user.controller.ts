@@ -14,7 +14,7 @@ type ReqSignup = {
   password: string
 }
 
-export const signup = async (req: Request<ReqSignup>, res: Response) => {
+export const signup = async (req: Request<ReqSignup>, res: Response, next: NextFunction) => {
   try{
     const searchUser = await prisma.user.findUnique({
       where: {email: req.body.email}
@@ -35,10 +35,11 @@ export const signup = async (req: Request<ReqSignup>, res: Response) => {
   }catch(error){
     console.log(chalk.bgRed("signup error"), error)
     res.status(500).json("Une erreur est survenu")
+    next()
   }
 }
 
-export const signin = async (req: Request, res: Response) => {
+export const signin = async (req: Request, res: Response, next: NextFunction) => {
   try{
     const user = await prisma.user.findUnique({
       where: {
@@ -70,10 +71,11 @@ export const signin = async (req: Request, res: Response) => {
   }catch(error){
     console.log(chalk.bgRed("signup error"), error)
     res.status(500).json("Une erreur est survenu")
+    next()
   }
 }
 
-export const getUser = async (req: Request, res: Response) => {
+export const getUser = async (req: Request, res: Response, next: NextFunction) => {
   try{
     if(req.query.id){
       const user = await prisma.user.findUnique({
@@ -95,5 +97,6 @@ export const getUser = async (req: Request, res: Response) => {
   }catch(error){
     console.log(chalk.bgRed("getuser error"), error)
     res.status(500).json("Une erreur est survenu")
+    next()
   }
 }
