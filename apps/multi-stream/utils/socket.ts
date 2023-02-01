@@ -32,6 +32,7 @@ export class SocketMachine {
     })
     this.socket.onAny((event, ...args) => {
       console.log("onAny", event, args)
+      //nms_stream_start
     })
     this.socket.on("disconnect", (...arg) => {
       console.log("socket disconnect", arg)
