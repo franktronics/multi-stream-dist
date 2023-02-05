@@ -41,7 +41,7 @@ export function ReceiverConnector(props: ReceiverConnectorProps) {
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent bg="white">
           <form action="" onSubmit={handleSubmit(onSubmit)}>
             <ModalHeader>Information sur la destination</ModalHeader>
             <ModalCloseButton />

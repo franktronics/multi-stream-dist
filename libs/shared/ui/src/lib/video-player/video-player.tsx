@@ -10,18 +10,9 @@ export interface VideoPlayerProps {
 export function VideoPlayer(props: VideoPlayerProps) {
   const { data } = props
 
-  useEffect(() => {
-    if(data.http !== ""){
-
-    }
-  }, [data.http])
-
   return (
     <AspectRatio bg="light" borderRadius="md" w="80%" ratio={16 / 9} boxShadow="base">
       <Box>
-        <video id="player-stream" data-setup='{}' controls width="100%" style={{aspectRatio: "16/9"}}>
-          <source src={data.http} type="video/flv"/>
-        </video>
         <BounceLoader color="var(--chakra-colors-primary)"/>
       </Box>
     </AspectRatio>
