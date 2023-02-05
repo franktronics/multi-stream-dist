@@ -1,7 +1,6 @@
 import { AspectRatio, Box } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import BounceLoader from "react-spinners/BounceLoader"
-import videojs from "video.js"
 
 /* eslint-disable-next-line */
 export interface VideoPlayerProps {
@@ -13,10 +12,7 @@ export function VideoPlayer(props: VideoPlayerProps) {
 
   useEffect(() => {
     if(data.http !== ""){
-      let player = videojs("player-stream", {}, function ready() {
-        /*@ts-ignore */
-        this.play()
-      })
+
     }
   }, [data.http])
 

@@ -68,6 +68,14 @@ export const theme = extendTheme({
       'warning': {
         default: '#FB923C',
         _dark: '#FB923C',
+      },
+      'walpha.200': {
+        default: 'gray.100',
+        _dark: 'whiteAlpha.200',
+      },
+      'walpha.300': {
+        default: 'gray.200',
+        _dark: 'whiteAlpha.300',
       }
     },
   },

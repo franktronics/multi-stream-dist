@@ -13,6 +13,13 @@ export const Button = defineStyleConfig({
       _hover: {
         bg: "primary-dark"
       }
+    },
+    cansel: {
+      bg: "walpha.200",
+      color: "black.100",
+      _hover: {
+        bg: "walpha.300"
+      }
     }
   },
   defaultProps: {

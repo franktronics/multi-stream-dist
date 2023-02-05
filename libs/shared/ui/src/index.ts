@@ -1,3 +1,4 @@
+export * from './lib/receiver-connector/receiver-connector';
 export * from './lib/source-connector/source-connector';
 export * from './lib/video-player/video-player';
 export * from './lib/home-dash/home-dash';
