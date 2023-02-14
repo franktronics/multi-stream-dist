@@ -17,7 +17,7 @@ const connectReceiver = (source, receivers) => {
   const normReceiver = receivers.map((rec) => {
     return `[f=flv]${parseLink(rec.server)}${rec.key}`
   }).join("|")
-  console.log("connection", normSource, normReceiver)
+
   const argument = [
     '-i',
     normSource,
@@ -45,9 +45,13 @@ const connectReceiver = (source, receivers) => {
 }
 
 export const streamInit = (socket: Socket) => {
-  const streamStart = (id) => {
+  const streamStart = (id: string) => {
     socket.emit("nms_stream_start", id)
   }
+  const streamEnd = (id: string) => {
+    socket.emit("nms_stream_end", id)
+  }
+
   socket.on("get_source_params", (arg, callback) => {
     //find server params
     const nms = new NodeMediaServer(nmsConfig)
@@ -55,6 +59,7 @@ export const streamInit = (socket: Socket) => {
     nms.on("postPublish", streamStart)
     nms.on('doneConnect', (id, args) => {
       nms.stop()
+      streamEnd(id)
     })
     const nanoid = customAlphabet(nanoidCustom.alph, nanoidCustom.size)
     const key = nanoid()

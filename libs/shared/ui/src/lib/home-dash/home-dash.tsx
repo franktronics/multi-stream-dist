@@ -39,6 +39,7 @@ export function HomeDash(props: HomeDashProps) {
     rtmp: '',
     http: ''
   })
+  const [streamId, setStreamId] = useState("")
   const [receivers, setReceivers] = useState<Array<RCProps>>([])
   const addReceiver = (receiver: RCProps) => {
     setReceivers(r => {return [...r, {...receiver}]})
@@ -49,11 +50,24 @@ export function HomeDash(props: HomeDashProps) {
       //
     })
   }
+  ////
+  userContext.socketMachine?.socket?.on("nms_stream_start", (data) => {
+    setStreamId(data.toString())
+  })
+  userContext.socketMachine?.socket?.on("nms_stream_end", (data) => {
+    setData(d => {return {
+      ...d,
+      key: '',
+      rtmp: '',
+      http: ''
+    }})
+    setStreamId("")
+  })
 
   return (
     <div className={styles['home-dash']}>
       <Box className={styles['home-dash__left']}>
-        <VideoPlayer data={data}/>
+        <VideoPlayer data={data} streamId={streamId}/>
         <Box alignSelf="start">
           <Text fontSize="2xl" mt="12px">Title video</Text>
         </Box>
