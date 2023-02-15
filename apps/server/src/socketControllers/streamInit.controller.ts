@@ -7,12 +7,22 @@ import { spawn } from "child_process"
 import {path} from '@ffmpeg-installer/ffmpeg'
 const ffmpegPath = path
 
+export type Source = {
+  key: string,
+  rtmp: string,
+  http: string
+}
+export type Receiver = {
+  server: string,
+  key: string
+}
+
 const parseLink = (str: string) => {
   if(str.split("").at(-1) === "/") return str
   else return `${str}/`
 }
 
-const connectReceiver = (source, receivers) => {
+const connectReceiver = (source: Source, receivers: Array<Receiver>, cb: Function) => {
   const normSource = parseLink(source.rtmp) + source.key
   const normReceiver = receivers.map((rec) => {
     return `[f=flv]${parseLink(rec.server)}${rec.key}`
@@ -38,6 +48,7 @@ const connectReceiver = (source, receivers) => {
   proc.stderr.setEncoding("utf8")
   proc.stderr.on('data', function(data) {
       console.log(data)
+      cb({message: "Stream en cour", error: null})
   })
   proc.on('close', function() {
       console.log('finished')
@@ -68,6 +79,6 @@ export const streamInit = (socket: Socket) => {
     callback({key, rtmp, http})
   })
   socket.on("connect_receiver", (arg, callback) => {
-    connectReceiver(arg.source, arg.receivers)
+    connectReceiver(arg.source, arg.receivers, callback)
   })
 }

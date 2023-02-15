@@ -3,6 +3,7 @@ import { HomeDash, LayoutDashboard, Navbar, Slidebar } from "@multi-stream/share
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import { useDashboard } from "../context/dashboard.context";
 import { useGetUser, useUser } from "../context/user.context";
 import { useService } from "../utils/service";
